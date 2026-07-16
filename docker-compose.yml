@@ -1,0 +1,15 @@
+services:
+  stripchat-recorder:
+    image: chantrail/stripchat-recorder:latest
+    container_name: stripchat-recorder
+    restart: unless-stopped
+    environment:
+      - TZ=Asia/Shanghai
+      # - LANGUAGE=en-US  # Set to en-US or zh-CN to override interface language
+    ports:
+      - "4040:3030"
+    volumes:
+      - ./data/logs:/app/stripchat-recorder/logs
+      - ./data/recordings:/app/stripchat-recorder/recordings
+      - ./data/modules:/app/stripchat-recorder/modules
+      - ./data/config:/app/stripchat-recorder/config
